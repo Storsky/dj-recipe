@@ -16,14 +16,11 @@ Including another URLconf
 
 from django.urls import path
 
-from calculator.views import buter, omlet, pasta
+from calculator.views import get_recipe
 
 urlpatterns = [
-    path('omlet/<int:guests>/', omlet),
-    path('pasta/<int:guests>/', pasta),
-    path('buter/<int:guests>/', buter),
-    path('omlet/', omlet),
-    path('pasta/', pasta),
-    path('buter/', buter),
+    path('<meal>/<int:guests>/', get_recipe),
+    path('<meal>/', get_recipe)
+    
     
 ]

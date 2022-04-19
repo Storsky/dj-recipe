@@ -20,33 +20,18 @@ DATA = {
     # можете добавить свои рецепты ;)
 }
 
-def omlet(request, guests = 1):
+def get_recipe(request, meal, guests = 1):
     
     
     context = {'recipe':{}}
-    
-    for item in DATA['omlet']:
-        context['recipe'][item] = DATA['omlet'][item] * guests 
+    if meal in DATA:
+        for item in DATA[meal]:
+            context['recipe'][item] = DATA[meal][item] * guests 
     
     
     return render(request, 'calculator/index.html', context)
 
-def pasta(request, guests):
-    context = {'recipe':{}}
-    for item in DATA['pasta']:
-        context['recipe'][item] = DATA['pasta'][item] * guests 
-    
-    
-    return render(request, 'calculator/index.html', context)
 
-def buter(request, guests):
-    context = {'recipe':{}}
-    
-    for item in DATA['buter']:
-        context['recipe'][item] = DATA['buter'][item] * guests 
-    
-    
-    return render(request, 'calculator/index.html', context)
 # Напишите ваш обработчик. Используйте DATA как источник данных
 # Результат - render(request, 'calculator/index.html', context)
 # В качестве контекста должен быть передан словарь с рецептом:
